@@ -1,6 +1,5 @@
 package kev.spring.data.mybatis;
 
-import kev.spring.data.mybatis.handler.MoneyTypeHandler;
 import kev.spring.data.mybatis.mapper.CoffeeMapper;
 import kev.spring.data.mybatis.model.Coffee;
 import kev.spring.data.mybatis.model.CoffeeExample;
