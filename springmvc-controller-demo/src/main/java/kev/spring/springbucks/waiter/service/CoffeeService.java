@@ -3,6 +3,7 @@ package kev.spring.springbucks.waiter.service;
 import kev.spring.springbucks.waiter.model.Coffee;
 import kev.spring.springbucks.waiter.repository.CoffeeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -60,5 +61,15 @@ public class CoffeeService {
      */
     public Coffee getCoffee(String name) {
         return coffeeRepository.findByName(name);
+    }
+
+    /**
+     * 新增 Coffee 信息
+     * @param name
+     * @param price
+     * @return Coffee
+     */
+    public Coffee saveCoffee(String name, Money price) {
+        return coffeeRepository.save(Coffee.builder().name(name).price(price).build());
     }
 }
