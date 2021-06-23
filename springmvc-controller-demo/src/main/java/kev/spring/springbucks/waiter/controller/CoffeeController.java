@@ -1,6 +1,7 @@
 package kev.spring.springbucks.waiter.controller;
 
 import kev.spring.springbucks.waiter.controller.request.NewCoffeeRequest;
+import kev.spring.springbucks.waiter.exception.FormValidationException;
 import kev.spring.springbucks.waiter.model.Coffee;
 import kev.spring.springbucks.waiter.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -95,9 +97,8 @@ public class CoffeeController {
     @ResponseStatus(HttpStatus.CREATED)
     public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee, BindingResult result) {
         if (result.hasErrors()) {
-            // 这里先简单处理一下，后续讲到异常处理时会改
-            log.warn("Binding Errors: {}", result);
-            return null;
+            throw new ValidationException(result.toString());
+//            throw new FormValidationException(result);
         }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
