@@ -67,6 +67,7 @@ public class CoffeeController {
     @GetMapping(path = "/", params = "name")
     @ResponseBody
     public Coffee getByName(@RequestParam String name) {
+        log.info("name {}", name);
         return coffeeService.getCoffee(name);
     }
 
@@ -80,6 +81,19 @@ public class CoffeeController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee) {
+        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+    }
+
+    /**
+     * 增加单条咖啡信息
+     *
+     * @param newCoffee
+     * @return
+     */
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Coffee addCoffeeJson(@RequestBody NewCoffeeRequest newCoffee) {
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
 
