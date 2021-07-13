@@ -4,7 +4,7 @@
 - Jar 描述，META-INF/MANIFEST.MF
 - Spring Boot Loader，org/springframework/boot/loader 
 - 项⽬自己的内容，放在 BOOT-INF/classes
-- 项⽬依赖的jar，放在，BOOT-INF/lib
+- 项⽬依赖的jar，放在BOOT-INF/lib
 - Jar包里不包含 JDK / JRE
 
 
