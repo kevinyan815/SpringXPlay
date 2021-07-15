@@ -58,7 +58,7 @@ ENTRYPOINT ["java", "-jar","/waiter-service.jar"]
 
 ### 操作步骤
 
-- mvn clean package 打jar包和Docker镜像
+- mvn clean package -Dmaven.test.skip=true 打jar包和Docker镜像
 
 - mvn dockerfile:push
     - `<useMavenSettingsForAuth>true</useMavenSettingsForAuth>` 要加上
