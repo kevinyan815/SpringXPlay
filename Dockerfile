@@ -1,7 +1,7 @@
 # Dockerfile也可以不放在项目目录下，通过 -f 指定Dockerfile的位置，比如在项目根下执行以下命令 
 # docker build -t <some tag> -f <dirPath/Dockerfile> .
 
-FROM ali-mvn AS MAVEN_BUILD
+FROM registry.cn-beijing.aliyuncs.com/docker-study-lab/aliyun-maven AS MAVEN_BUILD
 
 COPY pom.xml /build/
 COPY src /build/src
