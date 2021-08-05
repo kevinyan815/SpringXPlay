@@ -83,6 +83,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<!--			如果使用Docker多阶段打包构建镜像，把下面的plugin注释掉-->
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
@@ -97,7 +98,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<!--registry 的格式是<username>/<repository-name>, 默认往docker hub上push, 可以设置往私有仓库上push-->
+					<!--registry 默认往dockerHub上push格式是<username>/<repository-name>, 可以设置往私有仓库上push-->
 					<!--往私有仓库push镜像： <repository>private.registry.com/${docker.image.prefix}/${project.artifactId}</repository> -->
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${project.version}</tag>

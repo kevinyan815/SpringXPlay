@@ -75,6 +75,9 @@ ENTRYPOINT ["java", "-jar","/waiter-service.jar"]
 也可以不依赖插件，通过Docker的多阶段打包，先用一个maven镜像把项目打包，
 再把打包好的jar文件拷贝到jre镜像里
 
+
+#### 提醒：如果使用多阶段打包记得把POM文件里的 dockerfile-maven-plugin 去掉
+
 ```dockerfile
 # Dockerfile也可以不放在项目目录下，通过 -f 指定Dockerfile的位置，比如在项目根下执行以下命令 
 # docker build -t <some tag> -f <dirPath/Dockerfile>  --progress plain .
@@ -86,7 +89,7 @@ COPY src /build/src
 
 WORKDIR /build/
 
-RUN mvn clean package -Dmaven.test.skip=true
+RUN mvn clean package -Dmaven.test.skip=true --quiet
 
 FROM openjdk:8-jre
 
