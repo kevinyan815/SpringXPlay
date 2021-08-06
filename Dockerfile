@@ -7,6 +7,8 @@ COPY pom.xml /build/
 COPY src /build/src
 
 WORKDIR /build/
+# mount a host directory as .m2 storage for contianer 
+VOLUME /root/.m2
 
 RUN mvn clean package -Dmaven.test.skip=true --quiet
 
