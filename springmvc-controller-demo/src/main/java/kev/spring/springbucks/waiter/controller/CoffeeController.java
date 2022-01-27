@@ -11,6 +11,7 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -32,6 +34,9 @@ import java.util.List;
 public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
+
+    @Value("#{${abc}}")
+    private Map<String, String> abc;
 
     /**
      * 查询所有Coffee信息
@@ -41,6 +46,7 @@ public class CoffeeController {
     @GetMapping(path = "/", params = "!name")
     @ResponseBody
     public List<Coffee> getAll() {
+        System.out.println("eeeeeeeeeeeeee" +  abc.get("QSB"));
         return coffeeService.getAllCoffee();
     }
 
