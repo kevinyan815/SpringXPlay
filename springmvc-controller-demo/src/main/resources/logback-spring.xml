@@ -23,6 +23,9 @@
     <!-- 彩色日志格式 -->
     <property name="CONSOLE_LOG_PATTERN"
               value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!--配置规则类的位置-->
+    <!-- 这个是记录日志的节点的本机IP    -->
+    <conversionRule conversionWord="ip" converterClass="kev.spring.springbucks.waiter.support.IPLogConvertor"/>
 
     <!--输出到控制台-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -42,7 +45,7 @@
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <pattern>
-                {"level":"%level","time":"%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8}","remote_ip":"%X{remote_ip}","host":"%X{host}","thread":"%thread","path":"%X{uri}","class":"%c{36}","line":"%L","msg":"%m","stack_trace":"%exception{20}"}%n
+                {"level":"%level","time":"%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8}","ip":"%ip","remote_ip":"%X{remote_ip},"host":"%X{host}","thread":"%thread","path":"%X{uri}","class":"%c{36}","line":"%L","msg":"%m","stack_trace":"%exception{20}"}%n
             </pattern>
         </encoder>
         <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
