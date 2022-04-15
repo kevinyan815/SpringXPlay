@@ -46,7 +46,7 @@ public class CoffeeController {
     @GetMapping(path = "/", params = "!name")
     @ResponseBody
     public List<Coffee> getAll() {
-        System.out.println("eeeeeeeeeeeeee" +  abc.get("QSB"));
+        log.info("eeeeeeeeeeeeee" +  abc.get("QSB"));
         return coffeeService.getAllCoffee();
     }
 
