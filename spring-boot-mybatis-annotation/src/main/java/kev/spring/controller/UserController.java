@@ -36,7 +36,7 @@ public class UserController {
         userMapper.insert(user);
     }
 
-    @RequestMapping(value="update")
+    @RequestMapping(value="/update")
     public void update(@RequestBody User user) {
         userMapper.update(user);
     }
