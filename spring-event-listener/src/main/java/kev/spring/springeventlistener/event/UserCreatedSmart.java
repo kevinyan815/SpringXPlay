@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class UserCreatedSmart {
+public class UserCreatedSmart extends BaseEvent{
     private int userId;
 
     private String userName;
