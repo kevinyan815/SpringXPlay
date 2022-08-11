@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import kev.spring.serializer.PersonIdDeserializer;
 import kev.spring.serializer.PersonIdSerializer;
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
