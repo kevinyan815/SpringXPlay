@@ -23,13 +23,12 @@ public class RequestParamDemoController {
         return slogan;
     }
 
-    @GetMapping("request-params-option")
-    @ResponseBody
     /**
      * @RequestParam 指定选型的用法
      * required = "true", 指定参数不传, 不传会返回400错误
      * defaultValue 指定参数的默认值
      */
+    @GetMapping("request-params-option")
     public String RequestParamRequiredOption(@RequestParam(name="slogan", defaultValue = "hhhh") String slogan,
                                              @RequestParam(name="principle", required = true) String principle) {
 
@@ -37,8 +36,11 @@ public class RequestParamDemoController {
         return slogan + principle;
     }
 
+    /**
+     * @DateTimeFormat 指定时间字符串的格式, 然后把他转换成LocalDate等时间类型
+     * 如果参数格式不是pattern里指定的, 会返回 400 Bad Request 错误
+     */
     @GetMapping("/request-params-with-date")
-    @ResponseBody
     public LocalDateTime RequestParamBaseUse(@RequestParam("start_date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate)
     {
         LocalDateTime startTime = LocalDateTime.of(startDate, LocalTime.MIN);
